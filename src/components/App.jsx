@@ -1,23 +1,28 @@
-import { NavLink, Route, Routes } from "react-router-dom";
-import { GlobalStyled } from "components/global.styled";
-import { MoviesInput } from "./MoviesInput/moviesInput";
-import { TrendingMovies } from "./Trending/trending";
+import { Route, Routes } from "react-router-dom";
+import { GlobalStyled } from "./global.styled";
+import HomePages from "./Pages/Home";
+import MoviesPage from "./Pages/Movies";
+import MoviesDetails from "./Pages/MoviesDetails";
+import Cast from "./Cast";
+import ReviewsMovies from "./Pages/ReviewsMovies";
+import Layout from "./Layout";
+
 
 export const App = () => {
   return (
-    <div>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/movies">Movies</NavLink>
-      </nav>
-
+    <>
+    <Layout/>
       <Routes>
-        <Route path="/" element={<div><TrendingMovies/></div>}/>
-        <Route path="/movies" element={<div><MoviesInput/></div>}/>
+        <Route path="/" element={<Layout/>}/>
+        <Route index element={<HomePages />}/>
+        <Route path="movies" element={<MoviesPage />}/>
+        <Route path="movies/:movieId" element={<MoviesDetails />}/>
+        <Route path="movies/:movieId/cast" element={<Cast />}/>
+        <Route path="movies/:movieId/reviews" element={<ReviewsMovies />}/>
       </Routes>
 
       <GlobalStyled/>
-    </div>
+    </>
   );
 };
 

@@ -16,7 +16,7 @@ padding-bottom: 10px;
 
 font-family: BlinkMacSystemFont, sans-serif;
 font-size: 16px;
-color: black;
+color: #000000;
 padding-left: 20px;
 
 `;

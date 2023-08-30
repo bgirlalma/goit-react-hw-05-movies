@@ -1,12 +1,15 @@
+
 import {FormMovies, InputMovies, ButtonMovies } from './movies.styled'
-export const MoviesInput = () => {
-    return (
+const MoviesPage = () => {
+    return(
         <div>
             <FormMovies>
-                <InputMovies/>
+                <InputMovies className="input" type="text" placeholder="Search film"/>
 
                 <ButtonMovies type='submit'>search</ButtonMovies>
             </FormMovies>
         </div>
     )
 }
+
+export default MoviesPage;
