@@ -3,7 +3,7 @@ import { GlobalStyled } from "./global.styled";
 import HomePages from "./Pages/Home";
 import MoviesPage from "./Pages/Movies";
 import MoviesDetails from "./Pages/MoviesDetails";
-import Cast from "./Cast";
+import Cast from "./Pages/Cast";
 import ReviewsMovies from "./Pages/ReviewsMovies";
 import Layout from "./Layout";
 

@@ -1,5 +1,5 @@
 
-import {FormMovies, InputMovies, ButtonMovies } from './movies.styled'
+import {FormMovies, InputMovies, ButtonMovies } from '../Styled/movies.styled'
 const MoviesPage = () => {
     return(
         <div>

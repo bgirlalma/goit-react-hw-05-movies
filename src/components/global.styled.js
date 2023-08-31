@@ -22,6 +22,11 @@ body {
     padding: 0;
   }
 
+  ul{
+    margin: 0;
+    padding: 0;
+  }
+
   li{
     list-style: none;
     margin: 0;
@@ -37,5 +42,9 @@ body {
     margin: 0;
     padding: 0;
     border: none;
+  }
+
+  hr{
+    margin: 10px 0 ;
   }
 `;

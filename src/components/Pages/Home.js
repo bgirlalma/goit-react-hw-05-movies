@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import { FetchMovies } from "components/Api";
+import { MoviesList } from "components/MovieList/movieList";
 
 const HomePages = () => {
     const [movies, setMovies] = useState([]);
+   
 
 useEffect(() => {
-
 async function fetchTopMovies() {
     try{
         const moviesData = await FetchMovies();
-        setMovies( moviesData.results);
+        setMovies(moviesData)
     }catch(error){
         console.log('Данні не знайденні', error);
     }
@@ -19,14 +20,9 @@ fetchTopMovies();
 
 }, [])
     
-
     return (
         <div>
-           <ul>
-           {movies && movies.map(movie => (
-            <li key={movie.id}>{movie.title}</li>
-           ))}
-           </ul>
+       <MoviesList title='Trending today' movies={movies}/>
         </div>
     )
 }
