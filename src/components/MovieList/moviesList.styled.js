@@ -14,17 +14,23 @@ margin-bottom: 20px;
 
 `;
 
-export const StyledList = styled.ul`
-
-`;
-
 export const StyledImages = styled.img`
 height: 300px;
 object-fit: cover;
 `;
 
+export const WrapperContainer = styled.div`
+padding: 10px 5px 0 5px;
+`;
+
 export const MovieTitle = styled.h3`
 font-family: Fira Sans;
 font-size: 16px;
-text-decoration: none;
+color: blue;
+margin-bottom: 10px;
+`;
+
+export const DescTitle = styled.p`
+font-family: Fira Sans;
+font-size: 14px;
 `;

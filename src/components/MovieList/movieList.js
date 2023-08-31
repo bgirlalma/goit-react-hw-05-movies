@@ -1,9 +1,15 @@
 import React from "react";
+import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Container,TitleList, StyledList, StyledImages, MovieTitle } from './moviesList.styled';
+import { Container,TitleList, StyledList, StyledImages, WrapperContainer, MovieTitle, DescTitle } from './moviesList.styled';
+
+ const StyledLink = styled(Link)`
+ text-decoration: none;
+ color: black;
+`;
 
 export const MoviesList = ({ movies, title }) => {
     const settings = {
@@ -17,24 +23,25 @@ export const MoviesList = ({ movies, title }) => {
     return (
         <Container>
             <TitleList>{title}</TitleList>
-            <StyledList>
+            <ul>
             <Slider {...settings}>
                 {movies && movies.map(movie => {
-                    const { id, title, poster_path, overview, release_date } = movie;
+                    const { id, title, poster_path, release_date } = movie;
                     return (
                         <div key={id}>
-                            <Link to={`/movies/${id}`}>
+                            <StyledLink to={`/movies/${id}`}>
                                 <StyledImages src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={`${title} Poster`} />
                             
-                                <MovieTitle>{title}</MovieTitle>
-                                <p>{overview}</p>
-                                <p>Release Date: {release_date}</p>
-                            </Link>
+                            <WrapperContainer>
+                            <MovieTitle>{title}</MovieTitle>
+                                <DescTitle>Release Date: {release_date}</DescTitle>
+                            </WrapperContainer>
+                            </StyledLink>
                         </div>
                     )
                 })}
             </Slider>
-            </StyledList>
+            </ul>
            
         </Container>
     );
