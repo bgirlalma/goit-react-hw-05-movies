@@ -5,12 +5,9 @@ display: flex;
 justify-content: center;
 `;
 
-export const Container = styled.div`
-padding: 20px 20px 0 20px;
-`;
-
 export const Wrapp = styled.div`
 display: flex;
+padding: 20px 20px 0 20px;
 `;
 
 export const Image = styled.img`

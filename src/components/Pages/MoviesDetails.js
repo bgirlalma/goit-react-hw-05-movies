@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import { QueryInfoMovies } from "components/Api";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { RotatingLines } from "react-loader-spinner";
-import { Loader, Container, Wrapp, Image, InfoWrapp, InfoTitle, InfoOverview ,InfoGenres, InfoDesc } from "components/StyledPages/moviesDetails.styled";
+import { Loader, Wrapp, Image, InfoWrapp, InfoTitle, InfoOverview ,InfoGenres, InfoDesc } from "components/StyledPages/moviesDetails.styled";
+import { AdditionalInformation } from "./AdditionalInformation";
 
 
 const MoviesDetails = () => {
@@ -39,11 +40,12 @@ SearchMoviesId()
     const { genres, overview, title, vote_average, release_date, poster_path } = moviesInfo;
 
     return (
-        <Container className="container">
+        <div className="container">
+            <button type="button">Go Back</button>
             {moviesInfo ? (
+                
             <Wrapp>
                 <Image src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title}/>
-
                 <InfoWrapp className="wrapper-container">
                     <InfoTitle>{`${title} (${release_date.substring(0.4)})`}</InfoTitle>
                     <InfoDesc>User score: {vote_average}</InfoDesc>
@@ -58,7 +60,9 @@ SearchMoviesId()
             ) : (
                 Notify.failure("There is an error, please reload the page!")
             )}
-        </Container>
+
+            <AdditionalInformation title="Additional information"/>
+        </div>
         
     )
 };

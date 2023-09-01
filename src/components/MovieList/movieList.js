@@ -18,7 +18,7 @@ export const MoviesList = ({ movies, title }) => {
         infinite: true,
         speed: 500,
         slidesToShow: 7,
-        slidesToScroll: 1
+        slidesToScroll: 5,
     };
 
     if(!movies.length){

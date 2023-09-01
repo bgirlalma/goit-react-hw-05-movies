@@ -3,8 +3,8 @@ import { GlobalStyled } from "./global.styled";
 import HomePages from "./Pages/Home";
 import MoviesPage from "./Pages/Movies";
 import MoviesDetails from "./Pages/MoviesDetails";
-import Cast from "./Pages/Cast";
-import ReviewsMovies from "./Pages/ReviewsMovies";
+import Cast from "./Cast/cast";
+import ReviewsMovies from "./Reviews/reviews";
 import Layout from "./Layout";
 
 
@@ -19,6 +19,7 @@ export const App = () => {
         <Route path="movies/:movieId" element={<MoviesDetails />}/>
         <Route path="movies/:movieId/cast" element={<Cast />}/>
         <Route path="movies/:movieId/reviews" element={<ReviewsMovies />}/>
+        {/* <Route path="*" element={<NotFound/>} /> */}
       </Routes>
 
       <GlobalStyled/>
