@@ -15,6 +15,7 @@ text-decoration: none;
 const Navigation = styled.nav`
 display: flex;
 gap: 10px;
+margin-left: 20px;
 `;
 
 const Nav = () => {

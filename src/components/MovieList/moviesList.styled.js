@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const Loader  = styled.div`
+display: flex;
+justify-content: center;
+`;
+
 export const Container = styled.div`
 padding: 0 20px;
 `;
