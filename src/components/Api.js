@@ -43,24 +43,9 @@ throw error;
     }
   }
   
-//   const RequestSearchActor = async () => {
-//     try {
-//       const response = await AuthorizationMovies.get('/movies/get-movie-credits');
-//       return response.data;
-//     } catch (error) {
-//       console.error('Error searching movie credits:', error);
-//       throw error;
-//     }
-//   }
-  
-//    const RequestPageReview = async () => {
-//     try {
-//       const response = await AuthorizationMovies.get('/movies/get-movie-reviews');
-//       return response.data;
-//     } catch (error) {
-//       console.error('Error fetching movie reviews:', error);
-//       throw error;
-//     }
-//   }
+    // cast //
+  // name, profile_path
 
+  // reviews //
+// author, content
   export { QueryInfoMovies, KeywordSearch, FetchMovies} 

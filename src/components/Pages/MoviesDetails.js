@@ -1,15 +1,23 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams, Outlet, Link } from "react-router-dom";
 import { QueryInfoMovies } from "components/Api";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { RotatingLines } from "react-loader-spinner";
-import { Loader, Wrapp, Image, InfoWrapp, InfoTitle, InfoOverview ,InfoGenres, InfoDesc } from "components/StyledPages/moviesDetails.styled";
+import { Loader, Button, Wrapp, Image, InfoWrapp, InfoTitle, InfoOverview ,InfoGenres, InfoDesc } from "components/StyledPages/moviesDetails.styled";
 import { AdditionalInformation } from "./AdditionalInformation";
+import { AiOutlineCaretLeft } from "react-icons/ai";
+import styled from 'styled-components';
 
+export const StyledLink = styled(Link)`
+text-decoration: none;
+`;
 
 const MoviesDetails = () => {
     const {movieId} = useParams();
     const [moviesInfo, setMoviesId] = useState(null);
+    const location = useLocation()
+
+    const backLinkHref = location?.state?.from ?? {pathname: "/"};
 
     useEffect(() => {
 async function SearchMoviesId() {
@@ -41,9 +49,11 @@ SearchMoviesId()
 
     return (
         <div className="container">
-            <button type="button">Go Back</button>
-            {moviesInfo ? (
-                
+           
+           <Button>
+                <StyledLink to={backLinkHref}><AiOutlineCaretLeft/>Home</StyledLink>
+            </Button>
+            {moviesInfo ? (   
             <Wrapp>
                 <Image src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title}/>
                 <InfoWrapp className="wrapper-container">
@@ -62,6 +72,7 @@ SearchMoviesId()
             )}
 
             <AdditionalInformation title="Additional information"/>
+            <Outlet/>
         </div>
         
     )

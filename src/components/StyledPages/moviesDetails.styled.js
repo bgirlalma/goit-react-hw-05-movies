@@ -5,6 +5,18 @@ display: flex;
 justify-content: center;
 `;
 
+export const Button = styled.button`
+border: 1px solid #5e0080;
+border-radius: 10px;
+padding: 5px;
+margin-left: 20px;
+
+font-family: Droid Sans, sans-serif;
+font-size: 16px;
+
+
+`;
+
 export const Wrapp = styled.div`
 display: flex;
 padding: 20px 20px 0 20px;
@@ -24,7 +36,7 @@ margin-right: 20px;
 export const InfoTitle = styled.h2`
 font-family: Droid Sans, sans-serif;
 font-size: 22px;
-margin-bottom: 10px;
+margin-top: 10px;
 `;
 
 export const InfoOverview = styled.h3`

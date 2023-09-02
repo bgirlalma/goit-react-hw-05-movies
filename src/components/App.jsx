@@ -11,16 +11,18 @@ import Layout from "./Layout";
 export const App = () => {
   return (
     <>
-    <Layout/>
       <Routes>
-        <Route path="/" element={<Layout/>}/>
-        <Route index element={<HomePages />}/>
-        <Route path="movies" element={<MoviesPage />}/>
-        <Route path="movies/:movieId" element={<MoviesDetails />}/>
-        <Route path="movies/:movieId/cast" element={<Cast />}/>
-        <Route path="movies/:movieId/reviews" element={<ReviewsMovies />}/>
-        {/* <Route path="*" element={<NotFound/>} /> */}
+        <Route path="/" element={<Layout/>}>
+          <Route index element={<HomePages />}/>
+          <Route path="movies" element={<MoviesPage />}/>
+        <Route path="movies/:movieId" element={<MoviesDetails />}>
+          <Route path="movies/:movieId/cast" element={<Cast />}/>
+          <Route path="movies/:movieId/reviews" element={<ReviewsMovies />}/>
+          {/* <Route path="*" element={<NotFound/>} /> */}
+        </Route>
+        </Route>
       </Routes>
+
 
       <GlobalStyled/>
     </>
