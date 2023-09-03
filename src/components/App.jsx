@@ -4,28 +4,29 @@ import HomePages from "./Pages/Home";
 import MoviesPage from "./Pages/Movies";
 import MoviesDetails from "./Pages/MoviesDetails";
 import Cast from "./Cast/cast";
-import ReviewsMovies from "./Reviews/reviews";
 import Layout from "./Layout";
+import Reviews from "./Reviews/reviews";
+import { NotFound } from "./Pages/NotFound";
 
 
 export const App = () => {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<Layout/>}>
-          <Route index element={<HomePages />}/>
-          <Route path="movies" element={<MoviesPage />}/>
+    <div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePages />} ></Route>
+        <Route path="movies" element={<MoviesPage />} ></Route>
+
         <Route path="movies/:movieId" element={<MoviesDetails />}>
-          <Route path="movies/:movieId/cast" element={<Cast />}/>
-          <Route path="movies/:movieId/reviews" element={<ReviewsMovies />}/>
-          {/* <Route path="*" element={<NotFound/>} /> */}
+          <Route path="cast" element={<Cast />} ></Route>
+          <Route path="reviews" element={<Reviews />} ></Route>
         </Route>
-        </Route>
-      </Routes>
+        <Route path="*" element={<NotFound/>} ></Route>
+      </Route>
+    </Routes>
 
-
-      <GlobalStyled/>
-    </>
-  );
+    <GlobalStyled />
+  </div>
+);
 };
 

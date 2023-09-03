@@ -1,61 +1,61 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { QueryInfoMovies } from "components/Api";
-import { RotatingLines } from "react-loader-spinner";
+import { InfoCast } from "components/Api";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { WrapperList, Image, Container, InfoWrapp, TitleCast, DescCast} from "./cast.styled";
 
 const Cast = () => {
-
     const {movieId} = useParams();
     const [infoCast, setInfoCast] = useState(null);
 
-    useEffect(() => {
-        async function SearchMoviesId() {
+useEffect(() => {
+async function SearchMoviesId() {
+    try{
+        const movieInfoCast = await InfoCast(movieId);
+        console.log(movieInfoCast);
+    if (movieInfoCast && movieInfoCast.cast && movieInfoCast.cast.length > 0) {
+        setInfoCast(movieInfoCast.cast);
+    } else {
+        console.error("No cast data received");
+    }
+    }catch(error){
+        console.error(error)
+    }
+    }
           
-            try{
-        const movieInfoCast = await QueryInfoMovies(`${movieId}/credits`);
-        setInfoCast(movieInfoCast)
-            }catch(error){
-                console.error(error)
-            }
-        }
-    
-        
 SearchMoviesId()
     }, [movieId])
 
     if (!infoCast) {
         return (
         <div className="container">
-            <RotatingLines  
-            strokeColor="red"
-            strokeWidth="5"
-            animationDuration="1.5"
-            width="96"
-            visible={true}/> 
+          <p>Loading Cast...</p>
         </div>
         );
     }
    
-    return (
-        <div>
-
-{infoCast ? (
-    infoCast.filter((actor) => actor.id === movieId).map(({id, name, profile_path }) => (
+return (
+    <Container>
+        <WrapperList>
+    {infoCast && infoCast.length > 0 ? (
+    infoCast.map(({ id, name, character, profile_path }) => (
         <div key={id}>
-        <img src={`https://image.tmdb.org/t/p/w500${profile_path}`} alt={name} />
-        <div className="wrapper-container">
-          <h2>{name}</h2>
-          <p> </p>
-        </div>
+            
+                <li>
+                <Image src={`https://image.tmdb.org/t/p/w500${profile_path}`} alt={name} />
+
+                <InfoWrapp className="wrapper-container">
+                    <TitleCast>{name}</TitleCast>
+                    <DescCast>{character}</DescCast>
+                </InfoWrapp> 
+                </li>   
       </div>
     ))
-) : (
-    Notify.failure("Unable to download actor information!")
-)}
-        </div>
+    ) : (
+        Notify.failure("Unable to download actor information!")
     )}
-
-
+     </WrapperList>
+        </Container>
+    )}
 
 export default Cast;

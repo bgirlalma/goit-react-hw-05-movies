@@ -31,21 +31,43 @@ throw error;
     }
   };
   
-//   Детальна информація про фільм по його ID
- const QueryInfoMovies = async (movieId) => {
-    try {
-        const url = `https://api.themoviedb.org/3/movie/${movieId}`
-      const response = await axios.get(url, authorizationMovies);
-      return response.data;
-    } catch (error) {
-      console.error('Неможливо отримати інформація про поточний фільм: ', error);
-      throw error;
-    }
+//   Детальна информація про фільм по його ID та 
+const QueryInfoMovies = async (movieId) => {
+  try {
+      const url = `https://api.themoviedb.org/3/movie/${movieId}`
+    const response = await axios.get(url, authorizationMovies);
+    return response.data;
+  } catch (error) {
+    console.error('Неможливо отримати інформація про поточний фільм: ', error);
+    throw error;
   }
-  
-    // cast //
-  // name, profile_path
+}
+
+// Інформація про каст
+const InfoCast = async(movie_id) => {
+ try{
+  const castUrl = `https://api.themoviedb.org/3/movie/${movie_id}/credits`;
+  const response = await axios.get(castUrl, authorizationMovies);
+  return response.data;
+ }catch(error){
+  console.error('Інформація про акторів відсутня! ', error);
+    throw error;
+ } 
+}
+
+// Інформація про відгуки
+const InfoReviews = async(movie_id) => {
+  try{
+const revUrl = `https://api.themoviedb.org/3/movie/${movie_id}/reviews`
+const response = await axios.get(revUrl, authorizationMovies);
+console.log('API Response:', response.data);
+return response.data;
+  }catch(error){
+    console.error('Відгуків поки немає! ', error);
+      throw error;
+   } 
+}
 
   // reviews //
 // author, content
-  export { QueryInfoMovies, KeywordSearch, FetchMovies} 
+  export { QueryInfoMovies, KeywordSearch, FetchMovies, InfoCast, InfoReviews} 

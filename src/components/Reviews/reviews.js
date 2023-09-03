@@ -1,9 +1,46 @@
-const Reviews = () => {
-    return (
-        <div>
-        
-        </div>
-    )
-};
+import { InfoReviews } from "components/Api";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Container, Wrapper } from "./reviews.styled";
 
+const Reviews = () => {
+    const {movieId} = useParams();
+    const [reviews, setReviews] = useState(null);
+
+    
+useEffect(() => {
+async function InformationReviews() {
+    try{
+        const movieInfoReviews = await InfoReviews(movieId);
+    if (movieInfoReviews && movieInfoReviews.results && movieInfoReviews.results.length > 0) {
+        setReviews(movieInfoReviews.results);
+    } else {
+        Notify.failure("No reviews!");
+    }
+    }catch(error){
+        console.error(error)
+    }
+    }
+          
+    InformationReviews()
+    }, [movieId])
+
+    if (!reviews) {
+        return (
+        <div className="container">
+          <p>No reviews...</p>
+        </div>
+        );
+    }
+    return (
+        <Container>
+        {reviews.map(({ id, author, content, maxLength }) => (
+            <Wrapper key={id}>
+                <h2>{author}</h2>
+                <p>{content}</p> 
+            </Wrapper>
+        ))}
+    </Container>
+    )}
 export default Reviews;
