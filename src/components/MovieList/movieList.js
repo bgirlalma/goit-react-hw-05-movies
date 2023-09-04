@@ -12,7 +12,8 @@ import {Loader, Container,TitleList, StyledImages, WrapperContainer, MovieTitle,
  color: black;
 `;
 
-export const MoviesList = ({ movies, title }) => {
+ export const MoviesList = ({ movies, title }) => {
+    console.log("Movies received:", movies); 
     const settings = {
         dots: true,
         infinite: true,
@@ -40,7 +41,7 @@ export const MoviesList = ({ movies, title }) => {
             <ul>
                 
             <Slider {...settings}>
-                {movies && movies.map(movie => {
+                {Array.isArray(movies) && movies.map(movie => {
                     const { id, title, poster_path, release_date } = movie;
 
                     return (

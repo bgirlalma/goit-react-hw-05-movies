@@ -60,3 +60,12 @@ margin-bottom: 10px;
     margin-bottom: 0;
 }
 `;
+
+export const TitleDetails = styled.h2`
+font-family: Fira Sans;
+font-size: 24px;
+`;
+
+export const WrappList = styled.ul`
+padding: 20px 20px 0 20px;
+`;

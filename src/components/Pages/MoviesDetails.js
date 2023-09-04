@@ -3,12 +3,26 @@ import { useLocation, useParams, Outlet, Link } from "react-router-dom";
 import { QueryInfoMovies } from "components/Api";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { RotatingLines } from "react-loader-spinner";
-import { Loader, Button, Wrapp, Image, InfoWrapp, InfoTitle, InfoOverview ,InfoGenres, InfoDesc } from "components/StyledPages/moviesDetails.styled";
+import { Loader, Button, Wrapp, Image, InfoWrapp, InfoTitle, InfoOverview ,InfoGenres, InfoDesc, TitleDetails, WrappList } from "components/StyledPages/moviesDetails.styled";
 import { AiOutlineCaretLeft } from "react-icons/ai";
 import styled from 'styled-components';
 
 export const StyledLink = styled(Link)`
 text-decoration: none;
+`;
+
+export const StyledDetails = styled(Link)`
+font-family: Fira Sans;
+font-size: 18px;
+text-decoration: none;
+color: blue;
+
+&:focus{
+    color: red;
+}
+&:active{
+    color: red;
+}
 `;
 
 const MoviesDetails = () => {
@@ -72,16 +86,16 @@ SearchMoviesId()
 
 <div>
 <hr/>
-            <h2>{title}</h2>
-    <ul>
+    <TitleDetails>{title}</TitleDetails>
+<WrappList>
     <li>
-                <Link to={`/movies/${movieId}/cast`} >Cast</Link>
-            </li>
+    <StyledDetails to={`/movies/${movieId}/cast`} >Cast</StyledDetails>
+    </li>
 
-            <li>
-                <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
-            </li>
-    </ul>
+    <li>
+    <StyledDetails to={`/movies/${movieId}/reviews`}>Reviews</StyledDetails>
+    </li>
+</WrappList>
 </div>
             
             <Outlet/>

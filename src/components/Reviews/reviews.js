@@ -2,7 +2,7 @@ import { InfoReviews } from "components/Api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { Container, Wrapper } from "./reviews.styled";
+import { Container, Wrapper, ReviewsTitle,  ReviewsDesc} from "./reviews.styled";
 
 const Reviews = () => {
     const {movieId} = useParams();
@@ -37,8 +37,8 @@ async function InformationReviews() {
         <Container>
         {reviews.map(({ id, author, content, maxLength }) => (
             <Wrapper key={id}>
-                <h2>{author}</h2>
-                <p>{content}</p> 
+                <ReviewsTitle>{author}</ReviewsTitle>
+                <ReviewsDesc>{content}</ReviewsDesc> 
             </Wrapper>
         ))}
     </Container>

@@ -22,8 +22,9 @@ throw error;
 // Пошук по назві фільма
  const KeywordSearch = async (query) => {
     try {
-      const url = `https://api.themoviedb.org/3/search/movie?query="${query}"`
+      const url = `https://api.themoviedb.org/3/search/movie?query=${query}`
       const response = await axios.get(url, authorizationMovies);
+      console.log('API Response:', response.data.results);
       return response.data.results;
     } catch (error) {
       console.error('Помилка при пошуку фільма:', error);
@@ -60,7 +61,6 @@ const InfoReviews = async(movie_id) => {
   try{
 const revUrl = `https://api.themoviedb.org/3/movie/${movie_id}/reviews`
 const response = await axios.get(revUrl, authorizationMovies);
-console.log('API Response:', response.data);
 return response.data;
   }catch(error){
     console.error('Відгуків поки немає! ', error);
@@ -68,6 +68,4 @@ return response.data;
    } 
 }
 
-  // reviews //
-// author, content
   export { QueryInfoMovies, KeywordSearch, FetchMovies, InfoCast, InfoReviews} 
