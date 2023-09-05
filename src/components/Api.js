@@ -24,7 +24,6 @@ throw error;
     try {
       const url = `https://api.themoviedb.org/3/search/movie?query=${query}`
       const response = await axios.get(url, authorizationMovies);
-      console.log('API Response:', response.data.results);
       return response.data.results;
     } catch (error) {
       console.error('Помилка при пошуку фільма:', error);

@@ -18,8 +18,7 @@ const Searchbar = () => {
         
     try{
         const moviesQuery = await KeywordSearch(query);
-        console.log(moviesQuery.result)
-        setSearchResults(moviesQuery.result);
+        setSearchResults(moviesQuery);
     }catch(error){
         console.error(error);
     }
@@ -32,12 +31,10 @@ const Searchbar = () => {
   }
    }, [searchParams]);
 
- const Dispatch = async (e) => {
+ const Dispatch = (e) => {
   e.preventDefault();
-  if (typeof searchQuery === "string" && searchQuery.trim() !== "") {
-    await searchQueryMovies(searchQuery);
-    setSearchParams({ query: searchQuery });
-  }
+  setSearchParams({ query: searchQuery });
+  searchQueryMovies(searchQuery);
   e.target.reset();
 };
 
