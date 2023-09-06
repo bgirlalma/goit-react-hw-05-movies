@@ -27,9 +27,10 @@ const Searchbar = () => {
    useEffect(() => {
   const queryParams = searchParams.get("query");
   if(queryParams){
-    setQuery(queryParams)
+    setQuery(queryParams);
+    searchQueryMovies(queryParams);
   }
-   }, [searchParams]);
+   }, [searchParams, searchQueryMovies]);
 
  const Dispatch = (e) => {
   e.preventDefault();

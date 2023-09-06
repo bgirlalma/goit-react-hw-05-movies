@@ -1,11 +1,9 @@
 import React from "react";
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 import { RotatingLines } from "react-loader-spinner";
-import {Loader, Container,TitleList, StyledImages, WrapperContainer, MovieTitle, DescTitle } from './moviesList.styled';
+import {Loader, Container,TitleList, StyledImages, WrapperContainer, MovieTitle, DescTitle, Wrapp} from './moviesList.styled';
 
  const StyledLink = styled(Link)`
  text-decoration: none;
@@ -13,14 +11,6 @@ import {Loader, Container,TitleList, StyledImages, WrapperContainer, MovieTitle,
 `;
 
  export const MoviesList = ({ movies, title }) => {
-    console.log("Movies received:", movies); 
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 7,
-        slidesToScroll: 5,
-    };
 
     if(!movies.length){
     return(
@@ -38,12 +28,9 @@ import {Loader, Container,TitleList, StyledImages, WrapperContainer, MovieTitle,
     return (
         <Container>
             <TitleList>{title}</TitleList>
-            <ul>
-                
-            <Slider {...settings}>
-                {Array.isArray(movies) && movies.map(movie => {
+            <Wrapp>
+             {Array.isArray(movies) && movies.map(movie => {
                     const { id, title, poster_path, release_date } = movie;
-
                     return (
                         <div key={id}>
                             <StyledLink to={`/movies/${id}`}>
@@ -53,12 +40,12 @@ import {Loader, Container,TitleList, StyledImages, WrapperContainer, MovieTitle,
                             <MovieTitle>{title}</MovieTitle>
                                 <DescTitle>Release Date: {release_date}</DescTitle>
                             </WrapperContainer>
-                            </StyledLink>
+                            </StyledLink>  
+                            
                         </div>
                     )
                 })}
-            </Slider>
-            </ul>
+            </Wrapp>
            
         </Container>
     );

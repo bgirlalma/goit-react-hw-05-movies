@@ -19,9 +19,15 @@ margin-bottom: 20px;
 
 `;
 
+export const Wrapp = styled.div`
+display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px; 
+`;
+
 export const StyledImages = styled.img`
+width: 100%;
 height: 300px;
-object-fit: cover;
 `;
 
 export const WrapperContainer = styled.div`
@@ -39,3 +45,4 @@ export const DescTitle = styled.p`
 font-family: Fira Sans;
 font-size: 14px;
 `;
+
