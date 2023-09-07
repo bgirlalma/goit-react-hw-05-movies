@@ -32,12 +32,12 @@ const Searchbar = () => {
   }
    }, [searchParams, searchQueryMovies]);
 
- const Dispatch = (e) => {
-  e.preventDefault();
-  setSearchParams({ query: searchQuery });
-  searchQueryMovies(searchQuery);
-  e.target.reset();
-};
+   const Dispatch = (e) => {
+    e.preventDefault();
+      searchQueryMovies(searchQuery);
+      setSearchParams({ query: searchQuery }); 
+      setQuery("");
+  };
 
 return (
     <div>
@@ -47,7 +47,7 @@ return (
           name="query"
           placeholder="Search movies..."
           autoComplete="off"
-          value={searchQuery || ""}
+          value={searchQuery}
           onChange={(e) => setQuery(e.target.value)}></InputMovies>
         <ButtonMovies type="submit">Search</ButtonMovies>
       </FormMovies>

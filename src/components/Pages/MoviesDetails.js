@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useParams, Outlet, Link } from "react-router-dom";
+import { useLocation, useParams, Outlet, Link} from "react-router-dom";
 import { QueryInfoMovies } from "components/Api";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { RotatingLines } from "react-loader-spinner";
@@ -30,7 +30,8 @@ const MoviesDetails = () => {
     const [moviesInfo, setMoviesId] = useState(null);
     const location = useLocation()
 
-    const backLinkHref = location?.state?.from ?? {pathname: "/"};
+    const backLinkHref = location.state?.from || "/";
+    console.log(backLinkHref)
 
     useEffect(() => {
 async function SearchMoviesId() {
@@ -62,10 +63,10 @@ SearchMoviesId()
 
     return (
         <div className="container">
-           
-           <Button>
-                <StyledLink to={backLinkHref}><AiOutlineCaretLeft/>Home</StyledLink>
-            </Button>
+    <Button>
+        <StyledLink to={backLinkHref}>
+          <AiOutlineCaretLeft />Back</StyledLink>
+      </Button>
             {moviesInfo ? (
     <Wrapp>
         <Image src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} />

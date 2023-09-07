@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { RotatingLines } from "react-loader-spinner";
 import {Loader, Container,TitleList, StyledImages, WrapperContainer, MovieTitle, DescTitle, Wrapp} from './moviesList.styled';
@@ -11,7 +11,7 @@ import {Loader, Container,TitleList, StyledImages, WrapperContainer, MovieTitle,
 `;
 
  export const MoviesList = ({ movies, title }) => {
-
+    const location = useLocation()
     if(!movies.length){
     return(
     <Loader> 
@@ -33,7 +33,7 @@ import {Loader, Container,TitleList, StyledImages, WrapperContainer, MovieTitle,
                     const { id, title, poster_path, release_date } = movie;
                     return (
                         <div key={id}>
-                            <StyledLink to={`/movies/${id}`}>
+                            <StyledLink to={`/movies/${id}`} state={{ from: location }}>
                                 <StyledImages src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={`${title} Poster`} />
     
                             <WrapperContainer>
