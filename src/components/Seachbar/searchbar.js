@@ -34,9 +34,11 @@ const Searchbar = () => {
 
    const Dispatch = (e) => {
     e.preventDefault();
+    const form = e.currenTarget;
       searchQueryMovies(searchQuery);
       setSearchParams({ query: searchQuery }); 
-      setQuery("");
+      // setQuery("");
+      form.reset();
   };
 
 return (
